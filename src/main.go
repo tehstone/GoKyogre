@@ -91,4 +91,5 @@ func commandHandler(discord *discordgo.Session, message *discordgo.MessageCreate
 }
 
 func registerCommands() {
+	cmdHandler.Register("bobify", cmd.BobifyCommand)
 }
