@@ -91,5 +91,4 @@ func commandHandler(discord *discordgo.Session, message *discordgo.MessageCreate
 }
 
 func registerCommands() {
-	cmdHandler.Register("bob", cmd.BobCommand)
 }
