@@ -64,7 +64,6 @@ func commandHandler(discord *discordgo.Session, message *discordgo.MessageCreate
 	content := message.Content
 	args := strings.Fields(content)
 	name := strings.ToLower(args[0][1:])
-	fmt.Println(name)
 	command, found := cmdHandler.Get(name)
 	if !found {
 		fmt.Println("Command not found.")
@@ -84,12 +83,9 @@ func commandHandler(discord *discordgo.Session, message *discordgo.MessageCreate
 	ctx.Args = args[1:]
 	c := *command
 	c(*ctx)
-
-	//content := message.Content
-
-	fmt.Printf("Message: %+v || From: %s\n", message.Message, message.Author)
 }
 
 func registerCommands() {
 	cmdHandler.Register("bob", cmd.BobCommand)
+	cmdHandler.Register("announce", cmd.AnnounceCommand)
 }
