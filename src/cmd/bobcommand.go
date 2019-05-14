@@ -7,7 +7,7 @@ import (
 	"unicode"
 )
 
-func BobCommand(ctx framework.Context) {
+func BobifyCommand(ctx framework.Context) {
 	if len(ctx.Args) == 0 {
 		fmt.Println("No args.")
 		return
@@ -18,10 +18,10 @@ func BobCommand(ctx framework.Context) {
 	messagesplit := strings.Fields(ctx.Message.Content)
 	newmessage := strings.Join(messagesplit[1:], " ")
 
-	ctx.Reply(bobify(newmessage))
+	ctx.Reply(toSpongeBoBCase(newmessage))
 }
 
-func bobify(message string) string {
+func toSpongeBoBCase(message string) string {
 	runes := make([]rune, 0, len(message))
 	var upper bool
 	for _, c := range message {
