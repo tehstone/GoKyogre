@@ -57,9 +57,13 @@ func commandHandler(discord *discordgo.Session, message *discordgo.MessageCreate
 		//Do nothing because the bot is talking
 		return
 	}
-	if message.Content[:1] != commandPrefix {
-		return
-	}
+	if len(message.Content) > 0 {
+        if message.Content[:len(commandPrefix)] != commandPrefix {
+		  return
+        }
+	} else {
+        return
+    }
 
 	content := message.Content
 	args := strings.Fields(content)
